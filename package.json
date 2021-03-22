@@ -1,0 +1,19 @@
+{
+  "name": "hoodystore",
+  "version": "1.0.0",
+  "description": "An ecommerce store to sell hoodies",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thapussimon/hoodystore.git"
+  },
+  "author": "Thapus Simon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thapussimon/hoodystore/issues"
+  },
+  "homepage": "https://github.com/thapussimon/hoodystore#readme"
+}
