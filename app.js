@@ -4,6 +4,7 @@ const express=require('express');
 const adminRoutes=require('./routes/admin');
 const shopRoutes=require('./routes/shop');
 const path=require('path');
+const rootDir=require('./utils/path');
 
 //Creating the express app
 const app=express();
@@ -19,7 +20,7 @@ app.use(adminRoutes);
 app.use(shopRoutes);
 
 app.use('/',(req,res,next)=>{
-    res.status(402).sendFile(path.join(__dirname,'views','404.html'));
+    res.status(402).sendFile(path.join(rootDir,'views','404.html'));
 });
 
 
