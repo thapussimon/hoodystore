@@ -5,25 +5,12 @@
 //This is where the admin of the site adds new products
 const express=require('express');
 const router=express.Router();
+const path=require('path');
 
 router.use('/add-product',(req,res,next)=>{
     console.log("In Add Product Page");
-    const html=`
-    <html>
-    <head>
-    <title>Hoody Store</title>
-    </head>
-    <body>
-    <form action="/product" method="POST">
-    <label for="title">Hoody Name</label>
-    <input type="text" name="title" id="title">
-    <button type="submit">Add Hoody </button>
-    </form>
-    </body>
-    </html>
-    `;
-
-    res.send(html);
+   res.sendFile(path.join(__dirname,'..','views','add-products.html'));
+    
 });
 
 router.post('/product',(req,res,next)=>{

@@ -6,20 +6,12 @@
 const express=require('express');
 //Mini pluggable app created using express Router
 const router=express.Router();
+const path=require('path');
 
 router.get('/',(req,res,next)=>{
     console.log("In Shop Page");
-    const html=`
-    <html>
-    <head>
-    <title>Hoody Store</title>
-    </head>
-    <body>
-    <h1>Welcome to hoody Store</h1>
-    </body>
-    </html>
-    `;
-    res.send(html);
+    res.sendFile(path.join(__dirname,'..','views','shop.html'));
+    
 });
 
 module.exports=router;
