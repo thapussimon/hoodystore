@@ -16,24 +16,32 @@ app.use(bodyParser.urlencoded({extended:false}));
 //This is where the admin of the site adds new products
 app.use('/add-product',(req,res,next)=>{
     console.log("In Add Product Page");
-    console.log(req.body.title);
     const html=`
-        <html>
-        <head>
-        <title>Add Hoodies</title>
-        </head>
-        <body>
-        <h1>Welcome to Hoody Store</h1>
-        </body>
-        </html>
+    <html>
+    <head>
+    <title>Hoody Store</title>
+    </head>
+    <body>
+    <form action="/product" method="POST">
+    <label for="title">Hoody Name</label>
+    <input type="text" name="title" id="title">
+    <button type="submit">Add Hoody </button>
+    </form>
+    </body>
+    </html>
     `;
 
     res.send(html);
 });
 
+app.post('/product',(req,res,next)=>{
+    console.log(req.body.title);
+    res.redirect('/');
+});
+
 //This is our homepage
 //This middleware handles the homepage route
-app.use('/',(req,res,next)=>{
+app.get('/',(req,res,next)=>{
     console.log("In Shop Page");
     const html=`
     <html>
@@ -41,11 +49,7 @@ app.use('/',(req,res,next)=>{
     <title>Hoody Store</title>
     </head>
     <body>
-    <form action="/add-product" method="POST">
-    <label for="title">Hoody Name</label>
-    <input type="text" name="title" id="title">
-    <button type="submit">Add Hoody </button>
-    </form>
+    <h1>Welcome to hoody Store</h1>
     </body>
     </html>
     `;
