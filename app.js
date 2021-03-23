@@ -1,7 +1,7 @@
 const http=require('http');
 const express=require('express');
 
-const adminRoutes=require('./routes/admin');
+const adminData=require('./routes/admin');
 const shopRoutes=require('./routes/shop');
 const path=require('path');
 const rootDir=require('./utils/path');
@@ -22,12 +22,12 @@ app.set('views',path.join(rootDir,'views','templates'));
 
 app.use(express.static(path.join(rootDir,'public')));
 
-app.use(adminRoutes);
+app.use(adminData.router);
 app.use(shopRoutes);
 
 app.use('/',(req,res,next)=>{
     // res.status(402).sendFile(path.join(rootDir,'views','404.html'));
-    res.status(404).render('error');
+    res.status(404).render('error',{pageTitle:"Error"});
 });
 
 

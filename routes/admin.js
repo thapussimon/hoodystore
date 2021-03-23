@@ -7,16 +7,20 @@ const express=require('express');
 const router=express.Router();
 const path=require('path');
 const rootDir=require('../utils/path');
+const products=[];
 
 router.use('/add-products',(req,res,next)=>{
     console.log("In Add Product Page");
-   res.sendFile(path.join(rootDir,'views','add-products.html'));
+//    res.sendFile(path.join(rootDir,'views','add-products.html'));
+    res.render('add-products',{pageTitle:"Add Products"});
     
 });
 
-router.post('/product',(req,res,next)=>{
-    console.log(req.body.title);
+router.post('/products',(req,res,next)=>{
+    // console.log(req.body.title);
+    products.push(req.body.title);
     res.redirect('/');
 });
 
-module.exports=router;
+exports.router=router;
+exports.products=products;
