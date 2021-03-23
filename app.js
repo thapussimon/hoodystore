@@ -6,6 +6,7 @@ const shopRoutes=require('./routes/shop');
 const path=require('path');
 const rootDir=require('./utils/path');
 
+
 //Creating the express app
 const app=express();
 //By default our express app does not parse data
@@ -15,6 +16,7 @@ const bodyParser=require('body-parser');
 //We need need to setup a middleware which parses the data from the form
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.use(express.static(path.join(rootDir,'public')));
 
 app.use(adminRoutes);
 app.use(shopRoutes);
