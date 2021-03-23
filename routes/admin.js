@@ -3,7 +3,10 @@
 //This is our middleware for the Product Page
 //This middleware handles the add-products route
 //This is where the admin of the site adds new products
-app.use('/add-product',(req,res,next)=>{
+const express=require('express');
+const router=express.Router();
+
+router.use('/add-product',(req,res,next)=>{
     console.log("In Add Product Page");
     const html=`
     <html>
@@ -23,7 +26,9 @@ app.use('/add-product',(req,res,next)=>{
     res.send(html);
 });
 
-app.post('/product',(req,res,next)=>{
+router.post('/product',(req,res,next)=>{
     console.log(req.body.title);
     res.redirect('/');
 });
+
+module.exports=router;

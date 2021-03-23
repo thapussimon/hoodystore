@@ -2,7 +2,12 @@
 
 //This is our homepage
 //This middleware handles the homepage route
-app.get('/',(req,res,next)=>{
+
+const express=require('express');
+//Mini pluggable app created using express Router
+const router=express.Router();
+
+router.get('/',(req,res,next)=>{
     console.log("In Shop Page");
     const html=`
     <html>
@@ -16,3 +21,5 @@ app.get('/',(req,res,next)=>{
     `;
     res.send(html);
 });
+
+module.exports=router;
