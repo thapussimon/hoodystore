@@ -3,6 +3,7 @@ const express=require('express');
 
 const adminRoutes=require('./routes/admin');
 const shopRoutes=require('./routes/shop');
+const path=require('path');
 
 //Creating the express app
 const app=express();
@@ -18,7 +19,7 @@ app.use(adminRoutes);
 app.use(shopRoutes);
 
 app.use('/',(req,res,next)=>{
-    res.status(402).send('<h1>PAGE NOT FOUND</h1>');
+    res.status(402).sendFile(path.join(__dirname,'views','404.html'));
 });
 
 
