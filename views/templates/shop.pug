@@ -1,20 +1,9 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title #{pageTitle}
-    body 
-        header.main-header
-            nav.main-header-nav
-                ul.main-header-items-list 
-                    li.main-header-items
-                        a(href="/") Shop 
-                    li.main-header-items 
-                        a(href="/add-products") Add Hoodies 
-        main 
-            .product-container 
+extends layouts/main-layout.pug
+block styles 
+    link(rel="stylesheet", href="/css/main.css")
+block content 
+    main 
+        .product-container 
                 each product in prods 
                     .product-items 
                         .product-title 
@@ -23,4 +12,5 @@ html(lang="en")
                             img(src="", alt="hoody-image")
                         .product-description 
                             p This hoody made of cotton which is easy to fit and comfortable 
-                            
+                        .product-action 
+                            button Add to Cart
