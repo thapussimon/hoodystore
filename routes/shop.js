@@ -9,14 +9,9 @@ const router=express.Router();
 //Since I do not need path module again
 const path=require('path');
 
-const rootDir=require('../utils/path');
-const adminData=require('./admin');
 
-router.get('/',(req,res,next)=>{
-    console.log("In Shop Page");
-    // res.sendFile(path.join(rootDir,'views','shop.html'));
-    res.render('shop',{prods:adminData.products,pageTitle:"Shop"});
-    
-});
+const productsController=require('../controllers/products');
+
+router.get('/',productsController.getProducts);
 
 module.exports=router;

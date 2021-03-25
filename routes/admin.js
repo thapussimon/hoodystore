@@ -7,20 +7,13 @@ const express=require('express');
 const router=express.Router();
 const path=require('path');
 const rootDir=require('../utils/path');
-const products=[];
 
-router.use('/add-products',(req,res,next)=>{
-    console.log("In Add Product Page");
-//    res.sendFile(path.join(rootDir,'views','add-products.html'));
-    res.render('add-products',{pageTitle:"Add Products"});
-    
-});
 
-router.post('/products',(req,res,next)=>{
-    // console.log(req.body.title);
-    products.push(req.body.title);
-    res.redirect('/');
-});
+//dividing our routes => into controllers which ineracts with views & models
+const productsController=require('../controllers/products');
 
-exports.router=router;
-exports.products=products;
+router.get('/add-products',productsController.getAddProducts);
+
+router.post('/products',productsController.postAddProducts);
+
+module.exports=router;
