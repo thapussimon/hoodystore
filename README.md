@@ -13,3 +13,5 @@ These are the following branches & their functionalities:-
 
 
 3.) version3-projectOnPug => Dynamic templating capability is introduced using pug as the templating engine, layouts created to prevent duplication of content
+
+4.) version4 => MVC pattern is implemented. Already views setup finished. Now controllers is introduced which acts as the middleman between the views and models.
