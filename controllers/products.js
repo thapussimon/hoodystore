@@ -14,13 +14,17 @@ exports.postAddProducts=(req,res,next)=>{
     //Here we need to create an object for the Product class model
     //And pass the form data to it
     const product=new Product(req.body.title);
+    product.save();
     res.redirect('/');
 };
 
 exports.getProducts=(req,res,next)=>{
     console.log("In Shop Page");
-    const products=Product.fetchAll();
-    // res.sendFile(path.join(rootDir,'views','shop.html'));
-    res.render('shop',{prods:products,pageTitle:"Shop"});
+    //The shop page should render only after we fetch data from the products.json file
+    const products=Product.fetchAll(products=>{
+        // res.sendFile(path.join(rootDir,'views','shop.html'));
+        res.render('shop',{prods:products,pageTitle:"Shop"});
+    });
+    
     
 };
